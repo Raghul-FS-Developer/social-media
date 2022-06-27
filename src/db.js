@@ -1,3 +1,3 @@
-URL = "http://localhost:4000/"
+URL = "https://social-back007.herokuapp.com/"
 
 export default URL
