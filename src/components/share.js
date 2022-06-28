@@ -30,6 +30,11 @@ function Share() {
   };
   const [image, setImage] = useState("");
 
+  if(profile == undefined){
+    setProfile('')
+
+}
+
   const formdata = new FormData();
 
   const handleShare = async (e) => {
