@@ -33,7 +33,7 @@ function Share() {
   if(profile == undefined){
     setProfile('')
 
-}
+};
 
   const formdata = new FormData();
 
