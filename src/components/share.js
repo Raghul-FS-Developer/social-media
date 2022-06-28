@@ -30,8 +30,8 @@ function Share() {
   };
   const [image, setImage] = useState("");
 
-  if(profile == undefined){
-    setProfile('')
+  if(image == undefined){
+    setImage('')
 
 };
 
