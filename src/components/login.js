@@ -3,6 +3,8 @@ import '../styles/login.css';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import db from '../db'
+import {GiPartyPopper} from 'react-icons/gi'
+
 function Login() {
 
     const myStorage = window.localStorage
@@ -31,8 +33,8 @@ function Login() {
     <div className='login'>
         <div className='loginWrapper'>
             <div className='loginLeft'>
-                <h3 className='loginLogo'>SocialMedia</h3>
-                <span className='loginDesc'>connect with your friend and the world around you on SocialMedia<span className='custom'>:)</span></span>
+                <h3 className='loginLogo'>Fun<GiPartyPopper className='deko'/>Zone</h3>
+                <span className='loginDesc'>connect with your friend and the world around you on FunZone<span className='custom'>:)</span></span>
             </div>
             <div className='loginRight'>
                 <form className='loginBox' onSubmit={handleSubmit}>
@@ -45,8 +47,7 @@ function Login() {
                 </form>
             </div>
         </div>
-    
-    </div>
+        </div>
   )
 }
 

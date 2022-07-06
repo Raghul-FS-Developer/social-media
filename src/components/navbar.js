@@ -5,6 +5,7 @@ import {AiOutlineSearch } from 'react-icons/ai';
 import {BsFillPersonFill ,BsFillChatLeftDotsFill} from 'react-icons/bs';
 import {IoMdNotifications} from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
+import {GiPartyPopper} from 'react-icons/gi'
 import db from '../db';
 
 function Navbar({}){
@@ -37,12 +38,12 @@ function Navbar({}){
         <>
         <div className='topbarContainer'>
             <div className='topbarLeft'>
-                <span className='logo' onClick={()=>navigate('/')}>SocialMedia</span>
+                <span className='logo' onClick={()=>navigate('/')}>Fun<GiPartyPopper/>Zone</span>
             </div>
             <div className='topbarCenter'>
                 <div className='searchbar'>
                     <AiOutlineSearch className='searchIcon' />
-                    <input placeholder='search for friends post'className='searchInput'/>
+                    <input placeholder='search a post'className='searchInput'/>
                 </div>
             </div>
             <div className='topbarRight'>
@@ -53,15 +54,15 @@ function Navbar({}){
                 <div className='topbarIcons'>
                     <div className='topbarIconItem'>
                     <BsFillPersonFill size={25}/>
-                    <span className='topbarIconBadge'>1</span>
+                    {/* <span className='topbarIconBadge'>1</span> */}
                     </div>
                     <div className='topbarIconItem' onClick={()=>navigate('/chat')}>
                     <BsFillChatLeftDotsFill size={20} style={{paddingTop:'5px'}} />
-                    <span className='topbarIconBadge'>2</span>
+                    {/* <span className='topbarIconBadge'>2</span> */}
                     </div>
                     <div className='topbarIconItem'>
                     <IoMdNotifications size={25}/>
-                    <span className='topbarIconBadge'>2</span>
+                    {/* <span className='topbarIconBadge'>2</span> */}
                     </div>
                 </div>
                 <img src={user1 ? user1 :"https://globalcenters.columbia.edu/themes/custom/columbia/assets/img/people-default.svg"} alt='profile' onClick={handlenav} className='topbarImg'/>

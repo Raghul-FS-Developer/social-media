@@ -29,6 +29,7 @@
     padding: 0;
     margin:0;
     list-style: none;
+    text-align: center;
 }
 .rightbarFriend{
     display: flex;
@@ -82,7 +83,7 @@
     flex-wrap: wrap;
 }
 .btn{
-    border:2px solid teal;
+    border:2px solid rgb(10, 163, 156);
     padding:7px;
     border-radius: 5px;
     width:100px;
@@ -91,8 +92,10 @@
     cursor: pointer;
 }
 .right{
-    color:white;
-    background-color: teal;
+    background-color: white;
+    margin-left: 20px;
+    border-color: rgb(238, 89, 119);
+    color: rgb(238, 89, 119);
     
     display:flex;
     align-items: center;
@@ -100,18 +103,21 @@
 
 }
 .right:hover{
-    color:teal;
-    background-color: white;
+    background-color:rgb(238, 89, 119);
+    color: white;
     transition-duration: 500ms;
+}
+.online{
+    color:#555;
 }
 .message{
     background-color: white;
     margin-left: 20px;
-    border-color: teal;
-    color: teal;
+    border-color: rgb(10, 163, 156);
+    color: rgb(10, 163, 156);
 }
 .message:hover{
-    background-color: teal;
+    background-color: rgb(10, 163, 156);
     color: white;
     transition-duration: 500ms;
 }

@@ -5,7 +5,8 @@ import {format} from 'timeago.js'
 import db from '../db';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
-
+import {AiTwotoneHeart} from 'react-icons/ai'
+import {IoMdThumbsUp} from 'react-icons/io'
 
 function Post({post}) {
     
@@ -77,8 +78,8 @@ function Post({post}) {
         </div>
         <div className='postBottom'>
           <div className='postBottomLeft'>
-            <img className='likeIcon'  src='/assest/like.png' onClick={()=>likeHandler(post._id)}/>
-            <img className='likeIcon' src='/assest/heart.png' onClick={()=>likeHandler(post._id)}/>
+            <IoMdThumbsUp  size={20} className="bts1" onClick={()=>likeHandler(post._id)}/>
+            <AiTwotoneHeart size={20} className="bts" onClick={()=>likeHandler(post._id)}/>
             <span className='postLikeCounter'>{like} people liked it</span>
           </div>
           <div className='postBottomRight'>

@@ -64,7 +64,14 @@
     border-bottom:1px dashed gray ;
     font-size: 12px;    
 }
-
+.bts1{
+  cursor: pointer;
+  color:rgb(0, 160, 152)
+}
+.bts{
+  color: rgb(226, 77, 107) !important;
+  cursor: pointer;
+}
   
   .three-dots:after {
     cursor: pointer;

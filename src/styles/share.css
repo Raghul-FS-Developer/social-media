@@ -1,4 +1,5 @@
 .share{
+ 
     width: 100%;
     height:170px;
     border-radius: 5px;
@@ -45,6 +46,11 @@
     align-items: center;
     margin-right: 15px;   
 }
+.shareOptionss{
+    display: flex;
+    align-items: center;
+    margin-right: 15px;   
+}
 .shareIcon{
     font-size:20px;
     margin-right: 2px;
@@ -56,8 +62,13 @@
     border:none;
     padding: 7px;
     border-radius: 5px;
-    background-color: teal;
+    background-color: rgb(238, 89, 119);
     margin-right: 20px;
     color:white;
     cursor: pointer;
+}
+@media only screen and (max-width:625px){
+   .shareOption{
+        display:none
+    }
 }

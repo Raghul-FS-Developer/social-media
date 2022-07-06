@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import '../styles/conversation.css'
 import db from '../db'
+import {AiOutlineDelete} from 'react-icons/ai'
 
 function Conversation({conversation , currentUser}) {
 
@@ -25,7 +26,16 @@ function Conversation({conversation , currentUser}) {
   
   },[currentUser ,conversation])
 
+  const handleDelete = async(id)=>{
+    let res =  await axios.delete(`${db}deleteconv/${id}`)
+    if(res.status === 200){
+        window.location.reload()
+    }else{
+      alert('Deletion failed')
+    } 
 
+
+  }
 
 
   
@@ -34,9 +44,15 @@ function Conversation({conversation , currentUser}) {
  
        <div className='conversation'>
        { user && (
+        
        <>
+        <div className='conversationWrapper'>
        <img className='conversationImg' src={user.profilepicture ? user.profilepicture :"https://globalcenters.columbia.edu/themes/custom/columbia/assets/img/people-default.svg"}/>
        <span className='conversationName'>{user.username}</span>
+       </div>
+      
+       <div  className='deleteIcon' onClick={()=>handleDelete(conversation._id)}><AiOutlineDelete  size={20}/></div>
+    
        </>)}
 
     

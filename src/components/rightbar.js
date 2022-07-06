@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../styles/rightbar.css";
-import { Users } from "../dummydata";
-import Online from "./online";
+import birthday from '../img/birthday.png'
 import axios from "axios";
 import db from "../db";
 import { IoIosPersonAdd } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-
+import adsr from '../img/adsr.jpg'
 function Rightbar({ user }) {
   const myStorage = window.localStorage;
   const currentUser = myStorage.getItem("user");
@@ -21,21 +20,21 @@ function Rightbar({ user }) {
         <div className="birthdayContainer">
           <img
             className="birthdayImg"
-            src="/assest/gift.png"
+            src={birthday}
             alt="birthday img"
           />
           <span className="birthdayText">
             {" "}
-            <b>Pola Foster</b> and <b>3 other friends</b> have birthday today
+            <b>Praveen</b> and <b>5 other friends</b> have birthday today
           </span>
         </div>
-        <img className="rightbarAd" src="/assest/ad.png" />
+        <div className="birthday2">
+        <img className="rightbarAd" src={adsr}/>
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
-          {Users.map((u) => (
-            <Online key={u.id} users={u} />
-          ))}
+          <span className="online">No one is online</span>
         </ul>
+        </div>
       </>
     );
   };
@@ -106,8 +105,11 @@ const ProfileRight = () => {
       try {
        const res = await axios.post(`${db}newconv`,{senderId:currentUserId ,receiverId:id})
 
-       if(res){
+       if(res.data.statuscode === 200){
            navigate('/chat')
+          //  window.location.reload()
+       }else if(res.data.statuscode === 201){
+        navigate('/chat')
        }
       } catch (error) {
         console.log(error)

@@ -5,6 +5,14 @@
     position:sticky;
     top:50px
 }
+.sideImg{
+ 
+   object-fit: contain ;
+  
+   height: 200px;
+   width: 270px;
+
+}
 ::-webkit-scrollbar{
     width:5px;
 }
@@ -52,7 +60,7 @@
     text-align: center;
     font-weight: 500;
     padding-bottom: 10px;
-    color:teal
+    color:rgb(238, 89, 119)
 }
 .sidebarFriend{
      display: flex;
@@ -66,4 +74,9 @@
     border-radius:50%;
     object-fit: cover;
     margin-right:10px;
+}
+@media only screen and (max-width:600px){
+    .sidebar{
+        display:none
+    }
 }

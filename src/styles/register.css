@@ -10,6 +10,7 @@
     width:70%;
     height:70;
     display: flex;
+    flex-wrap:wrap;
 }
 .loginLeft,.loginRight{
     flex:1;
@@ -20,11 +21,12 @@
 .loginLogo{
     font-size:50px;
     font-weight: 800;
-    color:teal;
+    color:rgb(10, 163, 156);
     margin-bottom: 10px;
 }
 .loginDesc{
     font-size: 24px;
+    margin-bottom: 40px;
 }
 .registerBox{
     height:400px;
@@ -61,7 +63,7 @@
     height: 40px;
     border-radius: 10px;
     border:none;
-    background-color:rgb(5, 143, 143);
+    background-color:rgb(10, 163, 156);
     color:white;
     font-size:20px;
     font-weight: 500;
@@ -76,7 +78,7 @@
 .loginForgot{
     text-align: center;
     cursor: pointer;
-    color: #1616ee;
+
     font-size: smaller;
 }
 .loginRegisterButton{
@@ -85,14 +87,14 @@
     height: 40px;
     border-radius: 10px;
     border:none;
-    background-color:crimson;
+    background-color:rgb(243, 72, 106) ;
     color:white;
     font-size:20px;
     font-weight: 500;
     cursor: pointer;
 }
 .custom{
-    color:crimson;
+    color:rgb(243, 72, 106) ;
 }
 .bunch{
     display:flex;

@@ -74,7 +74,7 @@ function Share() {
 
         <div className="shareBottom">
           <div className="shareOptions">
-            <div className="shareOption">
+            <div className="shareOptionss">
               <MdPermMedia color="tomato" className="shareIcon" />
               <label style={{ cursor: "pointer" }} className="shareOptionText">
                 <input

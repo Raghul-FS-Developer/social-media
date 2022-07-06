@@ -2,6 +2,7 @@
     display:flex;
     flex-direction: column;
     margin-top: 20px;
+
     
 }
 .chatTop{
@@ -18,22 +19,25 @@
 .chatText{
     padding: 10px;
     border-radius: 5px;
-    background-color: rgb(17, 163, 163);
+    background-color: rgb(3, 177, 168);
     color:white;
     max-width: 200px;
+  overflow-wrap: break-word;
+      font-size: smaller;
 }
 .chatBottom{
     font-size: 10px;
     margin-top: 10px;
     text-align: right;
-    color:black
+    color:whitesmoke
 }
 
 .chat.own{
     align-items: flex-end;
 }
 .chat.own .chatText{
-    background-color: rgb(240, 238, 238);
-    color:black;
-    font-size: smaller;
+    background-color: rgb(238, 89, 119) ;
+    color:white;
+
+
 }

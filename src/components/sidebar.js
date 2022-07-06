@@ -1,9 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import '../styles/sidebar.css'
-import {MdRssFeed ,MdSlowMotionVideo ,MdGroups ,MdOutlineWorkOutline ,MdSchool} from 'react-icons/md'
-import {BsFillChatLeftTextFill ,BsFillBookmarkFill} from 'react-icons/bs'
-import {AiOutlineQuestionCircle} from 'react-icons/ai' 
-import {RiCalendarEventFill} from 'react-icons/ri'
+import adsl from '../img/adsl.png'
 import Friend from './friend'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -25,44 +22,8 @@ function Sidebar() {
   return (
     <div className='sidebar'>
       <div className='sidebarWrapper'>
-        <ul className='sidebarList'>
-          <li className='sidebarListItem'>
-            <MdRssFeed className='sidebarIcon'/>
-            <span className='sidebarListItemText'>Feed</span>
-          </li>
-          <li className='sidebarListItem' style={{cursor:"pointer"}}onClick={()=>navigate('/chat')}>
-            <BsFillChatLeftTextFill className='sidebarIcon'/>
-            <span className='sidebarListItemText'>Chats</span>
-          </li>
-          <li className='sidebarListItem'>
-            <MdSlowMotionVideo className='sidebarIcon'/>
-            <span className='sidebarListItemText'>Videos</span>
-          </li>
-          <li className='sidebarListItem'>
-            <MdGroups className='sidebarIcon'/>
-            <span className='sidebarListItemText'>Groups</span>
-          </li>
-          <li className='sidebarListItem'>
-            <BsFillBookmarkFill className='sidebarIcon'/>
-            <span className='sidebarListItemText'>Bookmarks</span>
-          </li>
-          <li className='sidebarListItem'>
-            <AiOutlineQuestionCircle className='sidebarIcon'/>
-            <span className='sidebarListItemText'>Questions</span>
-          </li>
-          <li className='sidebarListItem'>
-            <MdOutlineWorkOutline className='sidebarIcon'/>
-            <span className='sidebarListItemText'>Jobs</span>
-          </li>
-          <li className='sidebarListItem'>
-            <RiCalendarEventFill className='sidebarIcon'/>
-            <span className='sidebarListItemText'>Events</span>
-          </li><li className='sidebarListItem'>
-            <MdSchool className='sidebarIcon'/>
-            <span className='sidebarListItemText'>Courses</span>
-          </li>
-        </ul>
-        <button className='sidebarButton'>Show More</button>
+      <img className='sideImg' src={adsl} alt=''/>
+          
         <hr className='sidebarHr'/>
         <ul className='sidebarFriendList'>
           <p className='sub'>All Users</p>

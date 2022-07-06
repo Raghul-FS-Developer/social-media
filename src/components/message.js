@@ -12,23 +12,16 @@ function Message() {
 const[conversation ,setConversation] = useState([])  
 const[currentChat ,setCurrentChat] = useState(null)
 const[message ,setMessage] = useState([])
-// const [user,setUser]=useState([])
+
 const[newMessage, setNewMessage] = useState("")
 const[arrivalMessage, setArrivalMessage] = useState(null)
-// const[onlineusers, setOnlineUsers] = useState([])
+
 const socket= useRef()
 const scrollRef =useRef()
 const myStorage = window.localStorage
 const userId = myStorage.getItem('userId')
    
-//get a user
-// useEffect(()=>{
-//     const getuser = async()=>{
-//       let res = await axios.get(`${db}getuser?userId=${userId}`)
-//       setUser(res.data.data)
-//     }
-//     getuser()
-// },[userId])
+
 
 useEffect(()=>{
     socket.current = io("https://socket-io-back.herokuapp.com");
@@ -128,7 +121,7 @@ useEffect(()=>{
       
       {conversation.map((c)=>(
         <div onClick={()=>setCurrentChat(c)}>
-        <Conversation conversation={c} currentUser={userId}/>
+        <Conversation key={c._id} conversation={c} currentUser={userId}/>
         </div>
       ))}
        </div>
@@ -150,15 +143,17 @@ useEffect(()=>{
         <div className='chatBoxBottom'>
           <textarea className='chatMessageInput' placeholder='write something...' onChange={(e)=>setNewMessage(e.target.value)} value={newMessage}></textarea>
           <button className='chatSubmitButton' onClick={handleSubmit}>Send</button>
-        </div></> :<span style={{color:'gray', textAlign:"center",marginTop:'20px'}}>open a conversation to start a chat</span>}
+        </div></> :<span style={{color:'gray', textAlign:"center",marginTop:'50px'}}>open a conversation to start a chat</span>}
       </div>
       </div>
     <div className='chatOnline'>
-      <div className='chatOnlineWrapper'>
-        {/* <Chatonline onlineusers={onlineusers} currentId={userId} setCurrentChat={setCurrentChat}/> */}
-        
+
+        <img className='onlineImg' src="https://cdn.dribbble.com/users/618197/screenshots/3056869/output_t6mcwr.gif"/>
+        <hr className='imgHr'/>
+       <img className='onlineImg2' src="https://tl360.b-cdn.net/wp-content/uploads/2019/09/Different-chatting-apps.jpg"/>
+
       </div>
-      </div>
+
     </div>
     </>
   )
