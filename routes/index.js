@@ -645,11 +645,13 @@ router.get("/profile/:username", async (req, res) => {
 // new conversation
 router.post("/newconv",async(req,res)=>{
  try{
+
+  if(req.body.receiverId){
   const check = await conversation.findOne({
     members:{$all :[req.body.senderId, req.body.receiverId]}})
 
     if(check){
-      res.json({data:check,message:'the already have a conv'})
+      res.json({statuscode:201})
     }else{
   const newConversation = new conversation({
     members:[req.body.senderId, req.body.receiverId]
@@ -664,7 +666,7 @@ router.post("/newconv",async(req,res)=>{
       })
     }
   })
-}
+}}
  }catch(err){
   console.log(err)
  }
@@ -685,6 +687,24 @@ router.get('/getConv/:userId',async(req,res)=>{
     console.log(error)
   }
 
+});
+//delete conv
+router.delete(`/deleteconv/:Id`,async(req,res)=>{
+  try{
+
+       let step = await conversation.findByIdAndDelete(req.params.Id)
+       if(step){
+        let step2= await message.deleteMany({conversationId:req.params.Id})
+       if(step2){
+        res.status(200).json('deleted successfully')
+       }else{
+        res.status(400).json('deleted failed')
+       }}else{
+        res.status(400).json('deletion failed')
+       };
+  }catch(err){
+    console.log(err)
+  }
 })
 // new msg
 router.post("/newMsg",async(req,res)=>{
