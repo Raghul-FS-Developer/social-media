@@ -59,6 +59,10 @@
     justify-content: center;
     align-items: center;
 }
+.registerWait{
+    color:gray;
+    font-size: 14px;
+}
 .loginButton{
     height: 40px;
     border-radius: 10px;

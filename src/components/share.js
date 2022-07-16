@@ -11,7 +11,8 @@ import {AiOutlineCloseCircle} from 'react-icons/ai'
 function Share() {
   const [user1, setUser1] = useState();
   const [value, setValue] = useState();
-
+  const [wait, setWait] = useState(false);
+  
   useEffect(() => {
     let getData = async () => {
       let res = await axios.get(`${db}getauser/${currentUser}`);
@@ -41,7 +42,7 @@ function Share() {
 
   const handleShare = async (e) => {
     e.preventDefault();
-
+   setWait(true)
     formdata.append("userId", userId);
     formdata.append("disc", value);
     formdata.append("Image", image);
@@ -49,12 +50,19 @@ function Share() {
     let res = await axios.post(`${db}post`, formdata);
     if (res.data.statuscode === 200) {
       window.location.reload();
+      
+    }else{
+      alert("something went wrong")
     }
   };
   const handleImage=(e)=>{
-     
-    setImage(e.target.files[0])
-    setImg(URL.createObjectURL(e.target.files[0]))
+    if(e.target.files[0].size > 2000000){
+      alert('file size should be less than 2 mb')
+
+    }else{
+      setImage(e.target.files[0])
+      setImg(URL.createObjectURL(e.target.files[0]))
+    }
   }
 
   const handleClose =()=>{
@@ -82,7 +90,7 @@ function Share() {
           />
         </div>
         <hr className="shareHr" />
-
+            
         <div className="shareBottom">
           <div className="shareOptions">
             <div className="shareOptionss">
@@ -93,6 +101,7 @@ function Share() {
                   style={{ display: "none" }}
                   accept="image/*"
                   onChange={handleImage}
+                 
                 />
                 upload a photo
               </label>
@@ -115,8 +124,11 @@ function Share() {
           </button>
         </div>
       </div> 
-    
+      
       <div className="shareCenter">
+        {wait && 
+      <p className='sharePost'>posting...</p>
+        }
         <img src={img }  className='shareImg'/>   
         {img &&
         <AiOutlineCloseCircle  className="shareIcons" onClick={handleClose}/>

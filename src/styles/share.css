@@ -45,6 +45,11 @@
     max-height: 500px;
     object-fit: contain;
 }
+.sharePost{
+    color: gray;
+    font-size: 14px;
+    text-align: start;
+}
 
 .shareBottom{
     display: flex;

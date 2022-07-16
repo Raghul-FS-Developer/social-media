@@ -8,6 +8,7 @@ import {GiPartyPopper} from 'react-icons/gi'
 
 function Register() {
     
+    const [wait,setWait] =useState(false)
     const [msg ,setMsg]=useState('')
     const [username ,setUsername]=useState('')
     const [email ,setEmail]=useState('')
@@ -26,14 +27,16 @@ function Register() {
     }
     const handleSubmit=async(e)=>{
         e.preventDefault()
-        
+        setWait(true)
         try{
             
         let res = await axios.post(`${db}register`,formdata)
  
         if(res.data.statuscode === 200){
+            setWait(false)
             alert('check your mail for account activation link')
         }else{
+            setWait(false)
             setMsg(res.data.message)
         }}catch(err){
             console.log(err)
@@ -53,7 +56,18 @@ function Register() {
    formdata.append('disc',disc)
    formdata.append('relationship',relationship)
    formdata.append('profilepicture',profile)
-
+  
+   const handleImage=(e)=>{
+    if(e.target.files[0].size > 2000000){
+        alert('file size should be less than 2 mb')
+        
+    }else{
+        setProfile(e.target.files[0])
+    
+      }
+    
+  }
+  console.log(profile)
   return (
     <div className='login'>
         <div className='loginWrapper'>
@@ -74,12 +88,12 @@ function Register() {
                     <input placeholder='RelationShip' type='text' className='bunchInput' required onChange={(e)=>setRelationship(e.target.value)} maxLength={25}/>
 
                     </div>
-                    <label  className='register-profile'>
+                    <label style={{color:profile && 'green'}} className='register-profile'>
 
-                    <input type='file' accept='image/*' style={{display:'none'}}  onChange={(e)=>setProfile(e.target.files[0])} />
-                    <CgProfile size={25}/>profile
+                    <input type='file' accept='image/*' style={{display:'none'}}  onChange={handleImage} />
+                    <CgProfile  size={25}/>profile
                     </label>
-                    <p style={{color:'red'}}>{msg}</p>
+                    <p style={{color:'red'}}>{msg}</p> {wait && <p className='registerWait'>wait a moment...</p>}
                     <button className='loginButton' type='submit'>SignUp</button>
                     <hr/>
                     <button className='loginRegisterButton' onClick={()=>nav('/login')}>LogIn</button>
