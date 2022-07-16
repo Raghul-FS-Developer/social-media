@@ -56,8 +56,8 @@ function Post({post}) {
         
         <div className='postTop'>
           <div className='postTopLeft'>
-            <img className='postProfileImg'  onClick={()=>handleClick(user?.username)} src={user.profilepicture ? user.profilepicture:"https://globalcenters.columbia.edu/themes/custom/columbia/assets/img/people-default.svg"} alt='pic'/>
-            <span className='postUsername' >{user.username}</span>
+            <img className='postProfileImg'  onClick={()=>handleClick(user?.username)} src={user?.profilepicture ? user?.profilepicture:"https://globalcenters.columbia.edu/themes/custom/columbia/assets/img/people-default.svg"} alt='pic'/>
+            <span className='postUsername' >{user?.username}</span>
             <p className='postDate'>{format(post.createdAt)}</p>
           </div>
          {/* <div className='postTopRight'> */}
