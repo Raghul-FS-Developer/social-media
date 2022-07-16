@@ -1,3 +1,3 @@
-URL = "https://social-back007.herokuapp.com/"
+const db = "https://social-back007.herokuapp.com/"
 
-export default URL
+export default db

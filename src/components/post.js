@@ -1,6 +1,5 @@
 import React,{useEffect ,useState} from 'react'
 import '../styles/post.css';
-import { MdMoreVert } from 'react-icons/md'
 import {format} from 'timeago.js'
 import db from '../db';
 import axios from 'axios';

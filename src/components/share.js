@@ -5,8 +5,9 @@ import axios from "axios";
 import db from "../db";
 import { AiFillTags } from "react-icons/ai";
 import { HiLocationMarker } from "react-icons/hi";
-import { BsEmojiSmileFill, BsSunsetFill } from "react-icons/bs";
+import { BsEmojiSmileFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import {AiOutlineCloseCircle} from 'react-icons/ai'
 function Share() {
   const [user1, setUser1] = useState();
   const [value, setValue] = useState();
@@ -28,7 +29,8 @@ function Share() {
     navigate(`/profile/${currentUser}`);
     window.location.reload()
   };
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState();
+  const [img, setImg] = useState("");
 
   if(image == undefined){
     setImage('')
@@ -49,7 +51,16 @@ function Share() {
       window.location.reload();
     }
   };
+  const handleImage=(e)=>{
+     
+    setImage(e.target.files[0])
+    setImg(URL.createObjectURL(e.target.files[0]))
+  }
 
+  const handleClose =()=>{
+    setImage('')
+    setImg('')
+  }
   return (
     <form className="share" onSubmit={handleShare}>
       <div className="shareWrapper">
@@ -81,7 +92,7 @@ function Share() {
                   type="file"
                   style={{ display: "none" }}
                   accept="image/*"
-                  onChange={(e) => setImage(e.target.files[0])}
+                  onChange={handleImage}
                 />
                 upload a photo
               </label>
@@ -103,7 +114,14 @@ function Share() {
             Share
           </button>
         </div>
-      </div>
+      </div> 
+    
+      <div className="shareCenter">
+        <img src={img }  className='shareImg'/>   
+        {img &&
+        <AiOutlineCloseCircle  className="shareIcons" onClick={handleClose}/>
+        }
+        </div>  
     </form>
   );
 }

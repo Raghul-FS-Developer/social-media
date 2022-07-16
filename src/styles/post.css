@@ -126,3 +126,12 @@
     transition: opacity 0.2s, z-index 0.2s;
      max-height: 0.2s;
   }
+@media only screen and (max-width:444px){
+
+  .postDate{
+    font-size: 6px;
+  }
+  .postLikeCounter{
+    font-size: 8px;
+  }
+}
