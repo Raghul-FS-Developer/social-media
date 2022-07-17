@@ -26,4 +26,4 @@ multer-s3<br/>
 mongodb<br/>
 mongoose<br/>
 nodemailer<br/>
-socket.io<br/>
+nodemon<br/>
