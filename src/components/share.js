@@ -8,10 +8,13 @@ import { HiLocationMarker } from "react-icons/hi";
 import { BsEmojiSmileFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import {AiOutlineCloseCircle} from 'react-icons/ai'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Share() {
   const [user1, setUser1] = useState();
   const [value, setValue] = useState();
-  const [wait, setWait] = useState(false);
+
   
   useEffect(() => {
     let getData = async () => {
@@ -42,22 +45,22 @@ function Share() {
 
   const handleShare = async (e) => {
     e.preventDefault();
-   setWait(true)
+ const id = toast.loading("posting...")
     formdata.append("userId", userId);
     formdata.append("disc", value);
     formdata.append("Image", image);
 
     let res = await axios.post(`${db}post`, formdata);
+
     if (res.data.statuscode === 200) {
-      window.location.reload();
-      
+       window.location.reload()      
     }else{
-      alert("something went wrong")
+      toast.update(id,{render:"Something went wrong",type:"error",isLoading:false,autoClose:true,closeButton:true})
     }
   };
   const handleImage=(e)=>{
-    if(e.target.files[0].size > 2000000){
-      alert('file size should be less than 2 mb')
+    if(e.target.files[0].size > 10356302){
+      toast.error('File size should be less than 10 mb')
 
     }else{
       setImage(e.target.files[0])
@@ -71,6 +74,7 @@ function Share() {
   }
   return (
     <form className="share" onSubmit={handleShare}>
+      <ToastContainer/>
       <div className="shareWrapper">
         <div className="shareTop">
           <img
@@ -126,9 +130,7 @@ function Share() {
       </div> 
       
       <div className="shareCenter">
-        {wait && 
-      <p className='sharePost'>posting...</p>
-        }
+   
         <img src={img }  className='shareImg'/>   
         {img &&
         <AiOutlineCloseCircle  className="shareIcons" onClick={handleClose}/>

@@ -5,11 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import db from '../db'
 import {CgProfile} from 'react-icons/cg'
 import {GiPartyPopper} from 'react-icons/gi'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
     
-    const [wait,setWait] =useState(false)
-    const [msg ,setMsg]=useState('')
+    // const [wait,setWait] =useState(false)
+    // const [msg ,setMsg]=useState('')
     const [username ,setUsername]=useState('')
     const [email ,setEmail]=useState('')
     const [password ,setPassword]=useState('')
@@ -27,24 +29,25 @@ function Register() {
     }
     const handleSubmit=async(e)=>{
         e.preventDefault()
-        setWait(true)
+       
         try{
+    const id = toast.loading("please wait...")
             
         let res = await axios.post(`${db}register`,formdata)
  
         if(res.data.statuscode === 200){
-            setWait(false)
-            alert('check your mail for account activation link')
+       
+    toast.update(id, { render: "check your mail for account activation link", type: "success", isLoading: false ,closeButton:true,autoClose:true})
+
+          
         }else{
-            setWait(false)
-            setMsg(res.data.message)
+            
+            toast.update(id,{render:res.data.message,type:"error",autoClose:true,closeButton:true, isLoading: false })
         }}catch(err){
             console.log(err)
         }
        
-    }
-    
-  
+    } 
  
     const formdata = new FormData()
 
@@ -58,18 +61,22 @@ function Register() {
    formdata.append('profilepicture',profile)
   
    const handleImage=(e)=>{
-    if(e.target.files[0].size > 2000000){
-        alert('file size should be less than 2 mb')
+       if(e.target.files[0].size > 10356302){
+           alert('file size should be less than 10 mb')
+           
+        }else{
+            setProfile(e.target.files[0])
+            
+                toast.success(<img  style={{height:"150px",width:"150px",borderRadius:"50%",objectFit:"cover"}} src={URL.createObjectURL(e.target.files[0])}/>,{render:"profile pic"})
         
-    }else{
-        setProfile(e.target.files[0])
     
       }
     
   }
-  console.log(profile)
+
   return (
     <div className='login'>
+        <ToastContainer limit={2}/>
         <div className='loginWrapper'>
             <div className='loginLeft'>
                 <h3 className='loginLogo'>Fun<GiPartyPopper className='deko'/>Zone</h3>
@@ -93,7 +100,7 @@ function Register() {
                     <input type='file' accept='image/*' style={{display:'none'}}  onChange={handleImage} />
                     <CgProfile  size={25}/>profile
                     </label>
-                    <p style={{color:'red'}}>{msg}</p> {wait && <p className='registerWait'>wait a moment...</p>}
+                    {/* <p style={{color:'red'}}>{msg}</p> {wait && <p className='registerWait'>wait a moment...</p>} */}
                     <button className='loginButton' type='submit'>SignUp</button>
                     <hr/>
                     <button className='loginRegisterButton' onClick={()=>nav('/login')}>LogIn</button>

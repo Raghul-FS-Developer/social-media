@@ -41,7 +41,8 @@ function Post({post}) {
   const handleDelete= async(id)=>{
     let res = await axios.delete(`${db}deletepost/${id}/${user2}`)
     if(res.data.statuscode === 200){
-      window.location.reload()
+     
+   window.location.reload()
     }
   }
   const handleClick=(username)=>{
@@ -52,6 +53,7 @@ function Post({post}) {
         <>
 
     <div className='post'>
+    
       <div className='postWrapper'>
         
         <div className='postTop'>
