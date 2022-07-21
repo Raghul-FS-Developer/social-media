@@ -31,13 +31,13 @@ function Register() {
         e.preventDefault()
        
         try{
-    const id = toast.loading("please wait...")
+    const id = toast.loading("Please wait...")
             
         let res = await axios.post(`${db}register`,formdata)
  
         if(res.data.statuscode === 200){
        
-    toast.update(id, { render: "check your mail for account activation link", type: "success", isLoading: false ,closeButton:true,autoClose:true})
+    toast.update(id, { render: "Check your mail for account activation link", type: "success", isLoading: false ,closeButton:true,autoClose:true})
 
           
         }else{
@@ -62,7 +62,7 @@ function Register() {
   
    const handleImage=(e)=>{
        if(e.target.files[0].size > 10356302){
-           alert('file size should be less than 10 mb')
+           toast.error('File size should be less than 10 mb')
            
         }else{
             setProfile(e.target.files[0])
