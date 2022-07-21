@@ -3,7 +3,8 @@ import '../styles/forgotconfirm.css';
 import {useNavigate ,useParams} from 'react-router-dom'
 import axios from 'axios';
 import db from '../db'
-
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 function ForgotConfirm() {
   
 const navigate=useNavigate()
@@ -16,8 +17,8 @@ const[newpassword,setNewPassword]=useState("")
 
  let handleSubmit=async(e)=>{
    e.preventDefault()
-    
-    if(password === newpassword){
+   const id  = toast.loading('Please wait...')
+        if(password === newpassword){
         
        let res = await axios.post(`${db}verify/${params.token}`,{
        password:password})
@@ -25,19 +26,23 @@ const[newpassword,setNewPassword]=useState("")
 
     if(res.data.statuscode==200){
      
-     alert("password changed successfully")
-     navigate("/login")
+      toast.update(id,{render:"password changed successfully",isLoading:false,type:'success',autoClose:true,closeButton:true})
+      setTimeout(()=>navigate("/login"),2000)
     
     }else{
-        setMsg(res.data.message)
+      toast.update(id,{render:res.data.message,isLoading:false,type:'error',autoClose:true,closeButton:true})
+
     }
 }else{
-     setMsg("Password Doesn't Match")
+       toast.update(id,{render:"Password Doesn't Match",isLoading:false,type:'error',autoClose:true,closeButton:true,delay:1000})
+
     }
 }
 
   return (
     <div className='login'>
+     <ToastContainer autoClose={2000}/>
+
     <div className='loginWrapper'>
         <div className='loginLeft'>
             <h3 className='loginLogo'>SocialMedia</h3>
