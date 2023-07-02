@@ -1,3 +1,3 @@
-const db = "https://social-back007.herokuapp.com/"
+const db = "https://https-social-render-com.onrender.com/"
 
 export default db
