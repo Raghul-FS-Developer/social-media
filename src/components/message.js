@@ -24,7 +24,7 @@ const userId = myStorage.getItem('userId')
 
 
 useEffect(()=>{
-    socket.current = io("https://socket-io-back.herokuapp.com");
+    socket.current = io("https://https-social-socket-render-com.onrender.com");
     socket.current.on("getMessage",data => {
       
       setArrivalMessage({
