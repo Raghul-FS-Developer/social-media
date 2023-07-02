@@ -9,6 +9,7 @@ Frameworks I Used..!<br/>
 Packages I Used..!<br/>
 
 axios<br/>
+react-toastify<br/>
 react-router-dom<br/>
 react-icons<br/>
 socket.io<br/>
